@@ -1,4 +1,4 @@
 export const currentObsession = {
-  spotifyTrackId: "4iV5W9uYEdYUVa79Axb7Rh",
+  spotifyTrackId: "3OdTCZcZGarvo4AapvYgeP?si=972186cae13149d7",
   note: "My current obsession",
 };
