@@ -1,4 +1,5 @@
-export const currentObsession = {
-  spotifyTrackId: "3OdTCZcZGarvo4AapvYgeP?si=972186cae13149d7",
+export const currentSong = {
+  artist: "Sade",
+  track: "Like a Tattoo",
   note: "My current obsession",
 };

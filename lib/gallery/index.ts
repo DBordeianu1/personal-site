@@ -8,7 +8,7 @@ import type {
   AspectRatio,
 } from "./types";
 
-const MIN_TILE_SHORT_EDGE = 200;
+const MIN_TILE_SHORT_EDGE = 400;
 
 const RATIO_VALUES: Record<AspectRatio, number> = {
   portrait: 2 / 3,    // w/h = 2:3 → w < h, short edge = w
@@ -34,11 +34,13 @@ function effectiveRatio(node: LayoutNode): number {
 }
 
 // Recursively builds the layout tree.
-// depth drives the direction alternation; photos is the slice for this subtree.
+// availableWidth tracks the pixel width of this region so vertical splits can be
+// vetoed after computing the actual proportion (not just the 50/50 estimate).
 function buildNode(
   photos: readonly Photo[],
   depth: number,
-  viewportWidth: number
+  viewportWidth: number,
+  availableWidth: number,
 ): LayoutNode {
   if (photos.length === 1) {
     return { kind: "leaf", photoId: photos[0].id, ratio: photos[0].ratio };
@@ -48,24 +50,39 @@ function buildNode(
   const firstPhotos = photos.slice(0, a);
   const secondPhotos = photos.slice(a);
 
-  // Narrow viewports always stack vertically (horizontal splits).
-  // Wide viewports alternate: even depth → vertical (side-by-side), odd → horizontal (stacked).
-  const direction: Split["direction"] =
-    viewportWidth < 600 || depth % 2 === 1 ? "horizontal" : "vertical";
+  // Whether a vertical split is a candidate at this depth/viewport.
+  const candidateVertical = viewportWidth >= 600 && depth % 2 === 1;
 
-  const first = buildNode(firstPhotos, depth + 1, viewportWidth);
-  const second = buildNode(secondPhotos, depth + 1, viewportWidth);
+  // Build children with a conservative width estimate. If the candidate direction
+  // ends up rejected below, children received a slightly narrow estimate — this
+  // causes them to be more conservative about their own vertical splits, which
+  // is acceptable over-enforcement rather than under-enforcement.
+  const estimatedChildWidth = candidateVertical
+    ? availableWidth / 2
+    : availableWidth;
+
+  const first = buildNode(firstPhotos, depth + 1, viewportWidth, estimatedChildWidth);
+  const second = buildNode(secondPhotos, depth + 1, viewportWidth, estimatedChildWidth);
 
   const r1 = effectiveRatio(first);
   const r2 = effectiveRatio(second);
 
-  // Choose proportion so both children have equal dimension along the shared axis.
-  // Vertical split: both share the same height h.
-  //   w1 = h * r1, w2 = h * r2 → p = w1/(w1+w2) = r1/(r1+r2)
-  // Horizontal split: both share the same width w.
-  //   h1 = w/r1, h2 = w/r2 → p = h1/(h1+h2) = (1/r1)/(1/r1+1/r2) = r2/(r1+r2)
-  const proportion =
-    direction === "vertical" ? r1 / (r1 + r2) : r2 / (r1 + r2);
+  // Compute the proportion for each candidate direction.
+  // Vertical: p = r1/(r1+r2)  → first child gets fraction p of the width.
+  // Horizontal: p = r2/(r1+r2) → first child gets fraction p of the height.
+  const verticalP = r1 / (r1 + r2);
+  const horizontalP = r2 / (r1 + r2);
+
+  // Accept vertical only if BOTH actual child widths exceed the minimum.
+  // Using availableWidth * verticalP (not the /2 estimate) is the key fix:
+  // a portrait tile next to many landscapes might get only ~30% of the width.
+  const verticalOk =
+    candidateVertical &&
+    availableWidth * verticalP >= MIN_TILE_SHORT_EDGE &&
+    availableWidth * (1 - verticalP) >= MIN_TILE_SHORT_EDGE;
+
+  const direction: Split["direction"] = verticalOk ? "vertical" : "horizontal";
+  const proportion = verticalOk ? verticalP : horizontalP;
 
   return { kind: "split", direction, proportion, first, second };
 }
@@ -83,7 +100,7 @@ export function generate(photos: Photo[], viewportWidth: number): LayoutTree {
       `generate(): viewportWidth ${viewportWidth}px is below the minimum tile size (${roughMinWidth}px). Layout may violate the minimum-size constraint.`
     );
   }
-  const root = buildNode(photos, 0, viewportWidth);
+  const root = buildNode(photos, 0, viewportWidth, viewportWidth);
   return { root, totalPhotos: photos.length };
 }
 
@@ -105,41 +122,39 @@ function buildPhotoIndexMap(root: LayoutNode): Map<string, number> {
   return map;
 }
 
+// Height is passed top-down so every split is exact — no mismatch accumulation.
 function renderNode(
   node: LayoutNode,
   x: number,
   y: number,
   w: number,
+  h: number,
   gutter: number,
   rects: PixelRect[],
   photoIndexMap: Map<string, number>
-): number /* returns height of this region */ {
+): void {
   if (node.kind === "leaf") {
-    const h = w / RATIO_VALUES[node.ratio];
     const index = photoIndexMap.get(node.photoId);
     if (index === undefined) {
       throw new Error(`renderNode: unknown photoId "${node.photoId}"`);
     }
     rects[index] = { photoId: node.photoId, x, y, w, h };
-    return h;
+    return;
   }
 
   if (node.direction === "vertical") {
-    // Subtract half the gutter from each side of the shared edge.
+    // Both children share the same height h; widths are split by proportion.
     const w1 = Math.round(w * node.proportion - gutter / 2);
-    const w2 = w - w1 - gutter; // exact — avoids rounding accumulation
-    const x2 = x + w1 + gutter;
-    const h1 = renderNode(node.first, x, y, w1, gutter, rects, photoIndexMap);
-    const h2 = renderNode(node.second, x2, y, w2, gutter, rects, photoIndexMap);
-    // With gutter, the two heights won't be exactly equal; take the max.
-    return Math.max(h1, h2);
+    const w2 = w - w1 - gutter; // exact — no rounding accumulation
+    renderNode(node.first, x, y, w1, h, gutter, rects, photoIndexMap);
+    renderNode(node.second, x + w1 + gutter, y, w2, h, gutter, rects, photoIndexMap);
+  } else {
+    // Both children share the same width w; heights are split by proportion.
+    const h1 = Math.round(h * node.proportion - gutter / 2);
+    const h2 = h - h1 - gutter; // exact
+    renderNode(node.first, x, y, w, h1, gutter, rects, photoIndexMap);
+    renderNode(node.second, x, y + h1 + gutter, w, h2, gutter, rects, photoIndexMap);
   }
-
-  // Horizontal split: first is on top, second is below.
-  const h1 = renderNode(node.first, x, y, w, gutter, rects, photoIndexMap);
-  const y2 = y + h1 + gutter;
-  const h2 = renderNode(node.second, x, y2, w, gutter, rects, photoIndexMap);
-  return h1 + gutter + h2;
 }
 
 export function render(
@@ -147,16 +162,11 @@ export function render(
   containerWidth: number,
   gutter = 8
 ): RenderResult {
+  // Total height derived once from the root's effective ratio, then passed top-down.
+  // This ensures every split is pixel-exact — no sub-pixel mismatches between siblings.
+  const containerHeight = Math.round(containerWidth / effectiveRatio(tree.root));
   const photoIndexMap = buildPhotoIndexMap(tree.root);
   const rects: PixelRect[] = new Array(tree.totalPhotos);
-  const containerHeight = renderNode(
-    tree.root,
-    0,
-    0,
-    containerWidth,
-    gutter,
-    rects,
-    photoIndexMap
-  );
+  renderNode(tree.root, 0, 0, containerWidth, containerHeight, gutter, rects, photoIndexMap);
   return { rects, containerHeight };
 }

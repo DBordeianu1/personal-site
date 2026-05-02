@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        // iTunes/Apple CDN — album art from the Last.fm widget
+        protocol: "https",
+        hostname: "**.mzstatic.com",
+      },
+    ],
+  },
+  devIndicators: false
 };
 
 export default nextConfig;
