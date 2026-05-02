@@ -13,9 +13,6 @@
   --gallery-gutter: 8px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
