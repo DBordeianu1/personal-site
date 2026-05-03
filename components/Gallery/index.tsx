@@ -121,6 +121,7 @@ export function Gallery({ photos }: Props) {
                 ...REVEAL_STYLE,
               }}
               onClick={() => setLightboxPhoto(photo)}
+              onMouseEnter={() => { const i = new window.Image(); i.src = photo.src; }}
               onContextMenu={(e) => e.preventDefault()}
             >
               <Image

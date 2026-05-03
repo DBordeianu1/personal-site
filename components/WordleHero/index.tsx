@@ -12,7 +12,7 @@ const TILE_SIZE = "clamp(42px, 11.5vw, 62px)";
 function Tile({ letter, animate, delay }: { letter: string; animate: boolean; delay: number }) {
   return (
     <div
-      className="flex items-center justify-center border-2 text-2xl font-bold uppercase select-none"
+      className="flex items-center justify-center border-2 text-3xl font-bold uppercase select-none"
       style={{
         width: TILE_SIZE,
         height: TILE_SIZE,
