@@ -17,9 +17,9 @@ export const experiences: Experience[] = [
     period: "May 2026 – Present",
     date: "2026-05",
     description:
-      "Developed full-stack features for the PubSub+ Cloud Console on the Event Mesh and Observability team",
-    category: "work",
-    skills: ["TypeScript", "React", "Java", "Spring Boot", "REST APIs", "Cloud Infrastructure"],
+      "Incoming",
+    category: "work",skills: ["TBD"],
+    
   },
   {
     title: "Government Financial Aid and Awards Clerk",
@@ -50,7 +50,7 @@ export const experiences: Experience[] = [
     period: "May 2026 – Present",
     date: "2026-03",
     description:
-      "Elected with 81% of the vote. Managed external partnerships, sponsorships, and industry relations for the CSSA",
+      "Elected with 81% of the vote. Managed external partnerships and industry relations for the CSSA",
     category: "community",
     skills: ["Leadership", "Partnerships", "Collaboration", "Adaptability"],
   },

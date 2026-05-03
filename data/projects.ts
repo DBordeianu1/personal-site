@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
   name: "CloudGarden",
   tagline: "A Cloud-Native Simulation of Resource Lifecycle Management",
-  description: `It is a gamified simulation of service lifecycle management, modelling plant health as if they were cloud resources: they have state transitions, background schedulers monitoring them, and can enter "service failure" states if neglected.`, 
+  description: `Models plant health as if they were cloud resources: they have state transitions, background schedulers monitoring them, and can enter "service failure" states if neglected.`, 
   date: "2026-05",         
   period: "November 2025 – Present",    
   featured: true,    
@@ -38,7 +38,7 @@ export const projects: Project[] = [
   {
   name: "StableMarriage",
   tagline: "A comparative implementation of the Stable Marriage problem across four programming paradigms",
-  description: `It explores how language design shapes problem-solving approaches. The implementations use the Gale-Shapley and McVitie-Wilson algorithms.`,
+  description: `Explores how language design shapes problem-solving approaches. The implementations use the Gale-Shapley and McVitie-Wilson algorithms.`,
   date: "2026-03",         
   period: "January 2026 – April 2026",    
   featured: false,  
@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
   name: "Online Management Tutoring System",
   tagline: "An Online Tutoring Appointment Management System (OTAMS)",
-  description: `It supports three user-roles: Student, Tutor, and Administrator, each with distinct permissions and views, requiring role-based access control and real-time data synchronization across users.`,
+  description: `Supports three user-roles: Student, Tutor, and Administrator, each with distinct permissions and views, requiring role-based access control and real-time data synchronization across users.`,
   date: "2025-12",         
   period: "September 2025 – December 2025",    
   featured: false,    
@@ -58,7 +58,7 @@ export const projects: Project[] = [
   {
   name: "simpleChat",
   tagline: "A chat application, which uses the OCSF Java Framework",
-  description: `It is a multi-threaded client-server chat application implementing real-time message broadcasting and command-based control for both client and server consoles.`,
+  description: `Implements real-time message broadcasting and command-based control for both client and server consoles.`,
   date: "2025-11",         
   period: "November 2025",    
   featured: false,  

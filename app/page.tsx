@@ -1,11 +1,10 @@
-import { CurrentSong } from "@/components/CurrentSong";
+import { WordleHero } from "@/components/WordleHero";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center px-4 pt-16">
-      <section className="w-full max-w-sm">
-        <CurrentSong />
-      </section>
+    <main className="px-4 pt-24 sm:px-8">
+      <h1 className="mb-3 text-3xl font-semibold tracking-tight text-neutral-900">Hi! I&apos;m</h1>
+      <WordleHero />
     </main>
   );
 }
