@@ -38,6 +38,7 @@ function Tile({ letter, animate, delay }: { letter: string; animate: boolean; de
 
 export function WordleHero() {
   const [animate, setAnimate] = useState<boolean | null>(null);
+  const [animKey, setAnimKey] = useState(0);
 
   useEffect(() => {
     const seen = sessionStorage.getItem("wordle-hero-shown");
@@ -49,10 +50,19 @@ export function WordleHero() {
     }
   }, []);
 
+  const replay = () => {
+    setAnimKey((k) => k + 1);
+    setAnimate(true);
+  };
+
   if (animate === null) return null;
 
   return (
-    <div className="flex gap-1">
+    <div
+      key={animKey}
+      className="flex gap-1 cursor-pointer"
+      onClick={replay}
+    >
       {LETTERS.map((letter, i) => (
         <Tile
           key={i}
