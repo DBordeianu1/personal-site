@@ -19,13 +19,13 @@ function Slideshow({ images }: { images: string[] }) {
   const next = () => setIdx((i) => (i + 1) % images.length);
 
   return (
-    <div className="relative w-2/5 shrink-0 overflow-hidden rounded-l-2xl">
+    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl sm:h-auto sm:w-2/5 sm:shrink-0 sm:rounded-t-none sm:rounded-l-2xl">
       <Image
         src={images[idx]}
         fill
         alt={`Screenshot ${idx + 1}`}
         className="object-cover"
-        sizes="40vw"
+        sizes="(max-width: 640px) 100vw, 40vw"
         unoptimized={images[idx].endsWith(".png")}
       />
       {images.length > 1 && (
@@ -144,7 +144,7 @@ export function ProjectsSection({ projects }: Props) {
           style={REVEAL_STYLE}
           className="rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
         >
-          <div className={`flex items-stretch ${featured.imageSrc ? "min-h-[300px]" : ""}`}>
+          <div className={`flex flex-col sm:flex-row sm:items-stretch ${featured.imageSrc ? "sm:min-h-[300px]" : ""}`}>
             {(featured.images ?? (featured.imageSrc ? [featured.imageSrc] : null)) && (
               <Slideshow images={featured.images ?? [featured.imageSrc!]} />
             )}
