@@ -15,7 +15,6 @@ export const awards: Award[] = [
     description:
       "Scholarship awarded for bilingual proficiency in English and French as well as academic excellence.",
     url: "https://apar-asra.ca/our-scholarships/recipients",
-    thumbnailSrc: "/awards/apar-asra.png",
   },
   {
     name: "Association of Professors Retired from the University of Ottawa Scholarship Fund",
