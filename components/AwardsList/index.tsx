@@ -96,11 +96,11 @@ export function AwardsList({ awards }: Props) {
                       sizes="180px"
                     />
                     <span className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-neutral-500/70 px-3 py-1 text-xs text-white/60 backdrop-blur-sm transition-colors duration-200 group-hover:bg-neutral-700/80 group-hover:text-white">
-                      View ➤
+                      View ↗
                     </span>
                   </>
                 ) : (
-                  "View ➤"
+                  "View ↗"
                 )}
               </a>
             )}

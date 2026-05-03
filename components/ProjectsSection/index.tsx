@@ -150,7 +150,7 @@ export function ProjectsSection({ projects }: Props) {
             )}
             <div className="flex flex-1 flex-col justify-center gap-4 p-8">
               <span className="w-fit rounded-full bg-[#DDEAF7] px-3 py-1 text-xs font-medium text-[#1A5C9A]">
-                featured
+                Featured
               </span>
               <div>
                 <h2 className="text-2xl font-bold text-neutral-900">{featured.name}</h2>
