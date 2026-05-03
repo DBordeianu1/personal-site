@@ -62,7 +62,7 @@ export function AwardsList({ awards }: Props) {
           style={REVEAL_STYLE}
           className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
         >
-          <div className={`flex items-stretch gap-6 ${award.thumbnailSrc ? "min-h-[180px]" : ""}`}>
+          <div className={`flex flex-col gap-4 sm:flex-row sm:items-stretch sm:gap-6`}>
             <div className="min-w-0 flex-1">
               <h2 className="text-2xl font-bold text-neutral-900">{award.name}</h2>
               <p className="mt-0.5 text-base text-neutral-400">
@@ -82,7 +82,7 @@ export function AwardsList({ awards }: Props) {
                 rel="noopener noreferrer"
                 className={
                   award.thumbnailSrc
-                    ? "group relative w-[180px] shrink-0 overflow-hidden rounded-xl"
+                    ? "group relative order-first h-48 w-full overflow-hidden rounded-xl sm:order-last sm:h-auto sm:w-[180px] sm:shrink-0"
                     : "shrink-0 text-sm text-neutral-400 transition-colors hover:text-neutral-800"
                 }
               >
@@ -93,7 +93,7 @@ export function AwardsList({ awards }: Props) {
                       fill
                       alt={`${award.name} certificate`}
                       className="object-cover"
-                      sizes="180px"
+                      sizes="(max-width: 640px) 100vw, 180px"
                     />
                     <span className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-neutral-500/70 px-3 py-1 text-xs text-white/60 backdrop-blur-sm transition-colors duration-200 group-hover:bg-neutral-700/80 group-hover:text-white">
                       View ↗

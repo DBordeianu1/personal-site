@@ -184,16 +184,16 @@ export function ProjectsSection({ projects }: Props) {
               key={project.name}
               data-reveal
               style={REVEAL_STYLE}
-              className="flex h-full rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
+              className="flex flex-col sm:flex-row h-full rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
             >
               {project.imageSrc && (
-                <div className="relative w-2/5 shrink-0 overflow-hidden rounded-l-2xl">
+                <div className="relative h-48 w-full overflow-hidden rounded-t-2xl sm:h-auto sm:w-2/5 sm:shrink-0 sm:rounded-t-none sm:rounded-l-2xl">
                   <Image
                     src={project.imageSrc}
                     fill
                     alt={`${project.name} screenshot`}
                     className="object-cover"
-                    sizes="(max-width: 640px) 40vw, 20vw"
+                    sizes="(max-width: 640px) 100vw, 20vw"
                     unoptimized={project.imageSrc.endsWith(".png")}
                   />
                 </div>
