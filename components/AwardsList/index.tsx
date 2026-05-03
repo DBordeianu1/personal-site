@@ -82,7 +82,7 @@ export function AwardsList({ awards }: Props) {
                 rel="noopener noreferrer"
                 className={
                   award.thumbnailSrc
-                    ? "relative w-[180px] shrink-0 overflow-hidden rounded-xl"
+                    ? "group relative w-[180px] shrink-0 overflow-hidden rounded-xl"
                     : "shrink-0 text-sm text-neutral-400 transition-colors hover:text-neutral-800"
                 }
               >
@@ -95,7 +95,7 @@ export function AwardsList({ awards }: Props) {
                       className="object-cover"
                       sizes="180px"
                     />
-                    <span className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-neutral-500/70 px-3 py-1 text-xs text-white backdrop-blur-sm">
+                    <span className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-neutral-500/70 px-3 py-1 text-xs text-white/60 backdrop-blur-sm transition-colors duration-200 group-hover:bg-neutral-700/80 group-hover:text-white">
                       View ➤
                     </span>
                   </>

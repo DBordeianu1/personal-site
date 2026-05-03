@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     template: "%s | Daniela Bordeianu",
   },
   description:
-    "Personal site and portfolio of Daniela Bordeianu — featuring a recursively-tiled photo gallery and a curated music pick.",
+    "Personal site and portfolio of Daniela Bordeianu",
   openGraph: {
     title: "Daniela Bordeianu",
     description:
-      "Personal site and portfolio of Daniela Bordeianu — featuring a recursively-tiled photo gallery and a curated music pick.",
+      "Personal site and portfolio of Daniela Bordeianu",
     locale: "en_US",
     type: "website",
   },
