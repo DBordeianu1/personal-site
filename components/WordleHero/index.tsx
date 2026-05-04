@@ -7,7 +7,7 @@ const FLIP_MS    = 700;
 const STAGGER_MS = 350;
 
 // (100vw - 32px) / 7 ensures all tiles fit any viewport; 32px = safety margin + total gap
-const TILE_SIZE = "clamp(36px, calc((100vw - 32px) / 7), 78px)";
+const TILE_SIZE = "clamp(34px, calc((100vw - 48px) / 7), 78px)";
 
 function Tile({ letter, animate, delay }: { letter: string; animate: boolean; delay: number }) {
   return (
