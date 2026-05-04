@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+  ),
   title: {
     default: "Daniela Bordeianu",
     template: "%s | Daniela Bordeianu",
@@ -29,10 +33,8 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "photos/from-gibraltar.png",
-        width: 1200,
-        height: 630,
-        alt: "Daniela Bordeianu Portfolio Preview",
+        url: "/photos/from-gibraltar.jpg",
+        alt: "Daniela Bordeianu",
       },
     ],
   },

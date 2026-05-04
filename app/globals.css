@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-@theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --gallery-gutter: 8px;
-}
-
 html {
   scroll-behavior: smooth;
 }
