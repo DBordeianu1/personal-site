@@ -207,15 +207,13 @@ export function ProjectsSection({ projects }: Props) {
                 </div>
               )}
               <div className="flex flex-1 flex-col gap-4 p-5">
+                {project.teamProject && (
+                  <span className="w-fit rounded-full bg-[#FFEEAB] px-2.5 py-0.5 text-xs font-medium text-[#A8795E]">
+                    Team project
+                  </span>
+                )}
                 <div className="space-y-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-lg font-bold text-neutral-900">{project.name}</h3>
-                    {project.teamProject && (
-                      <span className="rounded-full bg-[#FFEEAB] px-2.5 py-0.5 text-xs font-medium text-[#A8795E]">
-                        Team project
-                      </span>
-                    )}
-                  </div>
+                  <h3 className="text-lg font-bold text-neutral-900">{project.name}</h3>
                   <p className="text-xs text-neutral-400">{project.period}</p>
                   <p className="text-sm font-medium text-neutral-700">{project.tagline}</p>
                   {project.description && (

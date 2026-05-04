@@ -31,12 +31,6 @@ export const metadata: Metadata = {
       "Personal site and portfolio of Daniela Bordeianu",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/photos/from-gibraltar.jpg",
-        alt: "Daniela Bordeianu",
-      },
-    ],
   },
 };
 
