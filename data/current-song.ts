@@ -1,5 +1,4 @@
 export const currentSong = {
-  artist: "Sade",
-  track: "Like a Tattoo",
+  youtubeVideoId: "BQUi7mD_PkM",
   note: "My current obsession",
 };

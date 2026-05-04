@@ -6,8 +6,17 @@
   --gallery-gutter: 8px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-geist-sans), sans-serif;
+}
+
+@keyframes hero-bg-fade {
+  from { background-color: white; }
+  to   { background-color: #f5f0e8; }
 }
 
 @keyframes wordle-flip-correct {

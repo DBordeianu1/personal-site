@@ -4,9 +4,12 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        // iTunes/Apple CDN — album art from the Last.fm widget
         protocol: "https",
-        hostname: "**.mzstatic.com",
+        hostname: "i.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
       },
     ],
   },

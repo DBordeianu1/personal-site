@@ -6,13 +6,13 @@ const LETTERS = ["D", "A", "N", "I", "E", "L", "A"];
 const FLIP_MS    = 700;
 const STAGGER_MS = 350;
 
-// clamp(42px, 11.5vw, 62px) keeps 7 tiles inside 360px viewport with gap-1
-const TILE_SIZE = "clamp(42px, 11.5vw, 62px)";
+// (100vw - 32px) / 7 ensures all tiles fit any viewport; 32px = safety margin + total gap
+const TILE_SIZE = "clamp(36px, calc((100vw - 32px) / 7), 78px)";
 
 function Tile({ letter, animate, delay }: { letter: string; animate: boolean; delay: number }) {
   return (
     <div
-      className="flex items-center justify-center border-2 text-xl sm:text-3xl font-bold uppercase select-none"
+      className="flex items-center justify-center border-2 text-lg min-[480px]:text-2xl sm:text-3xl font-bold uppercase select-none"
       style={{
         width: TILE_SIZE,
         height: TILE_SIZE,

@@ -72,7 +72,7 @@ export const awards: Award[] = [
       "Two-time recipient of the Excellence Award, recognized for maintaining excellent academic averages, a dedicated work ethic, and a continued commitment to learning.",
   },
   {
-    name: "Third Place in the 2022 Quebec Online Team Regional Contest",
+    name: "Top 3 in the 2022 Quebec Online Team Regional Contest",
     date: "April 2022",
     givenBy: "Poetry In Voice",
     description:
