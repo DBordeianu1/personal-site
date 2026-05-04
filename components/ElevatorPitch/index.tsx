@@ -34,6 +34,7 @@ export function ElevatorPitch() {
         if (entry.isIntersecting && !started.current) {
           started.current = true;
           observer.disconnect();
+          sessionStorage.setItem(SESSION_KEY, "1");
           setPhase("main");
         }
       },
@@ -69,7 +70,6 @@ export function ElevatorPitch() {
       if (i >= PS_TEXT.length) {
         clearInterval(interval);
         setPhase("done");
-        sessionStorage.setItem(SESSION_KEY, "1");
       }
     }, SPEED_MS);
     return () => clearInterval(interval);

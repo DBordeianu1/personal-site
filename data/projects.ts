@@ -7,6 +7,7 @@ export type Project = {
   featured: boolean;    // exactly one project should be featured
   imageSrc?: string;    // thumbnail used on grid cards
   images?: string[];    // slideshow images for the featured card
+  teamProject?: boolean;
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;
@@ -31,8 +32,10 @@ export const projects: Project[] = [
   description: `It is a web-based hotel management platform that allows customers to search and book available rooms across hotels in North America. It enables employees to manage bookings and handle walk-in rentals.`,
   date: "2026-04",         
   period: "January 2026 – April 2026",    
-  featured: true,  
-  imageSrc: "/projects/room4u-schema.png",   
+  featured: true,
+  teamProject: true,  
+  imageSrc: "/projects/room4u.png",   
+  images: ["/projects/room4u.png", "/projects/room4u-employee.png", "/projects/room4u-customer.png", "/projects/room4u-rooms.png"],
   techStack: ["PostgreSQL", "Java 17", "HTLM/CSS", "Apache Maven & Tomcat", "IntelliJ", "Python", "Git"],
   githubUrl: "https://github.com/DBordeianu1/room4u",
   },
@@ -43,6 +46,7 @@ export const projects: Project[] = [
   date: "2026-03",         
   period: "January 2026 – April 2026",    
   featured: false,  
+  teamProject: true,
   techStack: ["Java", "Go", "Scheme", "Prolog"],
   githubUrl: "https://github.com/DBordeianu1/StableMarriageProblem",
   },
@@ -53,6 +57,7 @@ export const projects: Project[] = [
   date: "2025-12",         
   period: "September 2025 – December 2025",    
   featured: false,    
+  teamProject: true,
   techStack: [ "Java", "Firebase (Auth & Realtime DB)", "XML", "Git"],
   githubUrl: "https://github.com/uOttawaSEG/project-group-4",
   },
@@ -73,6 +78,7 @@ export const projects: Project[] = [
   date: "2025-10",         
   period: "October 2025 – November 2025",    
   featured: false,  
+  teamProject: true,
   techStack: ["Quartus II", "FPGA"],
   },
 ];

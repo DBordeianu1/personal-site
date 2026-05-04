@@ -152,9 +152,16 @@ export function ProjectsSection({ projects }: Props) {
               <Slideshow images={f.images ?? [f.imageSrc!]} />
             )}
             <div className="flex flex-1 flex-col justify-center gap-4 p-8">
-              <span className="w-fit rounded-full bg-[#DDEAF7] px-3 py-1 text-xs font-medium text-[#1A5C9A]">
-                Featured
-              </span>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full bg-[#DDEAF7] px-3 py-1 text-xs font-medium text-[#1A5C9A]">
+                  Featured
+                </span>
+                {f.teamProject && (
+                  <span className="rounded-full bg-[#FFEEAB] px-3 py-1 text-xs font-medium text-[#A8795E]">
+                    Team project
+                  </span>
+                )}
+              </div>
               <div>
                 <h2 className="text-2xl font-bold text-neutral-900">{f.name}</h2>
                 <p className="mt-1 text-sm text-neutral-400">{f.period}</p>
@@ -201,7 +208,14 @@ export function ProjectsSection({ projects }: Props) {
               )}
               <div className="flex flex-1 flex-col gap-4 p-5">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-neutral-900">{project.name}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-lg font-bold text-neutral-900">{project.name}</h3>
+                    {project.teamProject && (
+                      <span className="rounded-full bg-[#FFEEAB] px-2.5 py-0.5 text-xs font-medium text-[#A8795E]">
+                        Team project
+                      </span>
+                    )}
+                  </div>
                   <p className="text-xs text-neutral-400">{project.period}</p>
                   <p className="text-sm font-medium text-neutral-700">{project.tagline}</p>
                   {project.description && (
