@@ -30,12 +30,14 @@ export function HeroSection() {
         <WordleHero />
       </div>
 
-      <a
-        href="#content"
-        className="mt-4 text-base italic text-neutral-400 transition-colors hover:text-neutral-600"
+      <button
+        type="button"
+        onClick={() => window.scrollBy({ top: window.innerHeight, behavior: "smooth" })}
+        className="mt-8 cursor-pointer text-xl italic text-neutral-400 transition-colors hover:text-neutral-600"
+        aria-label="Scroll down"
       >
         Scroll ↓
-      </a>
+      </button>
     </section>
   );
 }

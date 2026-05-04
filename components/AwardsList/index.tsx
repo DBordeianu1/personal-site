@@ -30,8 +30,6 @@ export function AwardsList({ awards }: Props) {
             el.style.transition = "opacity 0.55s ease-out, transform 0.55s ease-out";
             el.style.opacity = "1";
             el.style.transform = "translateY(0)";
-            // Clear all inline styles after the reveal so CSS classes
-            // (hover transition, etc.) take full control with no specificity conflict.
             setTimeout(() => {
               if (el.style.opacity === "1") {
                 el.style.transition = "";

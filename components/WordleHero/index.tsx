@@ -58,11 +58,7 @@ export function WordleHero() {
   if (animate === null) return null;
 
   return (
-    <div
-      key={animKey}
-      className="flex gap-1 cursor-pointer"
-      onClick={replay}
-    >
+    <div key={animKey} className="flex gap-1 cursor-pointer" onClick={replay}>
       {LETTERS.map((letter, i) => (
         <Tile
           key={i}

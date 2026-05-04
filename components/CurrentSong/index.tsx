@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-
 import type { TrackMeta } from "@/lib/youtube/types";
 import { currentSong } from "@/data/current-song";
 
@@ -16,15 +14,12 @@ type State =
 
 function Thumbnail() {
   return (
-    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
-      <Image
-        src={thumbnailUrl}
-        alt="Album cover"
-        fill
-        sizes="64px"
-        className="object-cover"
-      />
-    </div>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={thumbnailUrl}
+      alt="Album cover"
+      className="w-full object-cover sm:h-full sm:w-auto"
+    />
   );
 }
 
@@ -43,13 +38,17 @@ export function CurrentSong() {
     return () => { cancelled = true; };
   }, []);
 
+  const cardClass =
+    "group flex w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md sm:w-fit sm:flex-row sm:items-start";
+
   if (state.status === "loading") {
     return (
-      <div className="flex w-fit animate-pulse items-center gap-5 rounded-2xl border border-neutral-200 bg-white p-5">
-        <Thumbnail />
-        <div className="space-y-2">
+      <div className="flex w-full animate-pulse flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm sm:w-fit sm:flex-row sm:items-start">
+        <div className="aspect-video w-full bg-neutral-100 sm:w-44" />
+        <div className="flex flex-col gap-2 p-5 sm:p-6">
           <div className="h-4 w-36 rounded-full bg-neutral-100" />
           <div className="h-3 w-24 rounded-full bg-neutral-100" />
+          <div className="h-3 w-28 rounded-full bg-neutral-100" />
           <div className="h-3 w-20 rounded-full bg-neutral-100" />
         </div>
       </div>
@@ -58,16 +57,16 @@ export function CurrentSong() {
 
   if (state.status === "error") {
     return (
-      <a
-        href={youtubeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group flex w-fit cursor-pointer items-center gap-5 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
-      >
+      <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className={cardClass}>
         <Thumbnail />
-        <p className="text-xs text-neutral-400 transition-colors group-hover:text-neutral-700">
-          Listen on YouTube ↗
-        </p>
+        <div className="flex flex-col justify-center p-5 sm:p-6">
+          {currentSong.note && (
+            <p className="text-sm italic text-neutral-400">{currentSong.note}</p>
+          )}
+          <p className="mt-2 text-sm text-neutral-400 transition-colors group-hover:text-neutral-700">
+            Listen on YouTube ↗
+          </p>
+        </div>
       </a>
     );
   }
@@ -75,20 +74,15 @@ export function CurrentSong() {
   const { track } = state;
 
   return (
-    <a
-      href={youtubeUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex w-fit cursor-pointer items-center gap-5 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
-    >
+    <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className={cardClass}>
       <Thumbnail />
-      <div>
-        <p className="font-semibold text-neutral-900">{track.title}</p>
-        <p className="text-sm text-neutral-500">{track.artist}</p>
+      <div className="flex flex-col justify-center p-5 sm:p-6">
+        <p className="text-lg font-semibold text-neutral-900 sm:text-xl">{track.title}</p>
+        <p className="text-base text-neutral-500">{track.artist}</p>
         {currentSong.note && (
-          <p className="mt-1 text-sm italic text-neutral-400">{currentSong.note}</p>
+          <p className="mt-5 text-sm italic text-neutral-400">{currentSong.note}</p>
         )}
-        <p className="mt-2 text-xs text-neutral-400 transition-colors group-hover:text-neutral-700">
+        <p className="mt-2 text-sm text-neutral-400 transition-colors group-hover:text-neutral-700">
           Listen on YouTube ↗
         </p>
       </div>

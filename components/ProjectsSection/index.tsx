@@ -87,7 +87,9 @@ function LinkButton({ href, label, variant = "outline" }: { href: string; label:
 export function ProjectsSection({ projects }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const featured = projects.find((p) => p.featured) ?? null;
+  const featured = projects
+    .filter((p) => p.featured)
+    .sort((a, b) => b.date.localeCompare(a.date));
   const rest = projects
     .filter((p) => !p.featured)
     .sort((a, b) => b.date.localeCompare(a.date));
@@ -137,44 +139,43 @@ export function ProjectsSection({ projects }: Props) {
   return (
     <div ref={containerRef} className="space-y-8">
 
-      {/* Featured — hover + reveal on the same element */}
-      {featured && (
+      {/* Featured — full-width cards, one per featured project */}
+      {featured.map((f) => (
         <div
+          key={f.name}
           data-reveal
           style={REVEAL_STYLE}
           className="rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
         >
-          <div className={`flex flex-col sm:flex-row sm:items-stretch ${featured.imageSrc ? "sm:min-h-[300px]" : ""}`}>
-            {(featured.images ?? (featured.imageSrc ? [featured.imageSrc] : null)) && (
-              <Slideshow images={featured.images ?? [featured.imageSrc!]} />
+          <div className={`flex flex-col sm:flex-row sm:items-stretch ${f.imageSrc ? "sm:min-h-[300px]" : ""}`}>
+            {(f.images ?? (f.imageSrc ? [f.imageSrc] : null)) && (
+              <Slideshow images={f.images ?? [f.imageSrc!]} />
             )}
             <div className="flex flex-1 flex-col justify-center gap-4 p-8">
               <span className="w-fit rounded-full bg-[#DDEAF7] px-3 py-1 text-xs font-medium text-[#1A5C9A]">
                 Featured
               </span>
               <div>
-                <h2 className="text-2xl font-bold text-neutral-900">{featured.name}</h2>
-                <p className="mt-1 text-sm text-neutral-400">{featured.period}</p>
-                <p className="mt-1 text-base font-medium text-neutral-700">{featured.tagline}</p>
+                <h2 className="text-2xl font-bold text-neutral-900">{f.name}</h2>
+                <p className="mt-1 text-sm text-neutral-400">{f.period}</p>
+                <p className="mt-1 text-base font-medium text-neutral-700">{f.tagline}</p>
               </div>
-              {featured.description && (
-                <p className="text-base leading-relaxed text-neutral-600">
-                  {featured.description}
-                </p>
+              {f.description && (
+                <p className="text-base leading-relaxed text-neutral-600">{f.description}</p>
               )}
               <div className="flex flex-wrap gap-2">
-                {featured.techStack.map((tech) => (
+                {f.techStack.map((tech) => (
                   <TechPill key={tech} label={tech} />
                 ))}
               </div>
               <div className="flex flex-wrap gap-2">
-                {featured.githubUrl && <LinkButton href={featured.githubUrl} label="GitHub" variant="filled" />}
-                {featured.liveUrl && <LinkButton href={featured.liveUrl} label="Live demo" />}
+                {f.githubUrl && <LinkButton href={f.githubUrl} label="GitHub" variant="filled" />}
+                {f.liveUrl && <LinkButton href={f.liveUrl} label="Live demo" />}
               </div>
             </div>
           </div>
         </div>
-      )}
+      ))}
 
       {/* Grid — hover + reveal on the same element */}
       {rest.length > 0 && (
