@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CurrentSong } from "@/components/CurrentSong";
 
@@ -11,14 +11,26 @@ const NAV_LINKS = [
   { label: "Awards",           href: "/awards" },
 ];
 
-function Item({ question, children }: { question: string; children: React.ReactNode }) {
+function Item({ question, id, children }: { question: string; id: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(sessionStorage.getItem(`faq-${id}`) === "1");
+  }, [id]);
+
+  const toggle = () => {
+    setOpen((o) => {
+      const next = !o;
+      sessionStorage.setItem(`faq-${id}`, next ? "1" : "0");
+      return next;
+    });
+  };
 
   return (
     <div className="border-b border-neutral-200 last:border-b-0">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={toggle}
         className="flex w-full cursor-pointer items-center gap-3 py-5 text-left text-base font-medium text-neutral-900 transition-colors hover:text-neutral-500"
       >
         <svg
@@ -54,7 +66,7 @@ function Item({ question, children }: { question: string; children: React.ReactN
 export function FAQ() {
   return (
     <div className="divide-y-0">
-      <Item question="Where can I learn more about you?">
+      <Item id="learn-more" question="Where can I learn more about you?">
         <p className="mb-4">Have a look at the different sections of the website:</p>
         <div className="flex flex-wrap gap-2">
           {NAV_LINKS.map(({ label, href }) => (
@@ -69,7 +81,7 @@ export function FAQ() {
         </div>
       </Item>
 
-      <Item question="What are you working on right now?">
+      <Item id="working-on" question="What are you working on right now?">
         <p>
           I&apos;m starting my internship at Solace as a Software Developer, building
           full-stack features for the PubSub+ Cloud Console on the Event Mesh &amp;
@@ -78,7 +90,7 @@ export function FAQ() {
         </p>
       </Item>
 
-      <Item question="What other interests do you have, outside of tech?">
+      <Item id="interests" question="What other interests do you have, outside of tech?">
         <p>
           I love painting using watercolour, staying active (swimming, running,
           badminton), playing board/video games, and taking photos.
@@ -88,7 +100,7 @@ export function FAQ() {
         </Link>
       </Item>
 
-      <Item question="What song have you been playing on repeat lately?">
+      <Item id="song" question="What song have you been playing on repeat lately?">
         <div className="mt-1">
           <CurrentSong />
         </div>
