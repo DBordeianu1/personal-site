@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const MAIN_TEXT =
-  "I apply a creative vision to diverse problems... which is why I've found my home in Computer Science. This summer, I'll be interning at Solace as a Software Developer to explore Cloud Infrastructure and Observability.";
+  "I like building solutions that are both functional and thoughtful, which is why Computer Science felt right. This summer, I'll be interning at Solace as a Software Developer, exploring Cloud Infrastructure and Observability.";
 
 const PS_TEXT =
   "P.S. View this on a laptop to catch the interactive details since I've added a few (okay, a lot) of hover effects into the UI for you to discover.";

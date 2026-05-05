@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { HeroSection } from "@/components/HeroSection";
 import { ElevatorPitch } from "@/components/ElevatorPitch";
-import { CurrentSong } from "@/components/CurrentSong";
+import { FAQ } from "@/components/FAQ";
 import { RevealSection } from "@/components/RevealSection";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
@@ -41,6 +41,7 @@ export default function Home() {
                 alt="Daniela Bordeianu"
                 className="object-cover"
                 sizes="(max-width: 640px) 256px, 320px"
+                priority
               />
             </div>
           </RevealSection>
@@ -70,12 +71,12 @@ export default function Home() {
 
       <hr className="border-neutral-200" />
 
-      {/* 3 — Currently */}
+      {/* 3 — FAQ */}
       <RevealSection className="bg-[#f5f0e8] px-6 py-14 sm:px-12">
         <h2 className="mb-8 text-3xl font-semibold tracking-tight text-neutral-900">
-          Currently
+          FAQ
         </h2>
-        <CurrentSong />
+        <FAQ />
       </RevealSection>
 
       <hr className="border-neutral-200" />
