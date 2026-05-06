@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ProtectedAboutImage } from "@/components/ProtectedAboutImage";
 import { HeroSection } from "@/components/HeroSection";
 import { ElevatorPitch } from "@/components/ElevatorPitch";
 import { FAQ } from "@/components/FAQ";
@@ -34,16 +34,7 @@ export default function Home() {
           </RevealSection>
 
           <RevealSection as="div">
-            <div className="relative w-64 overflow-hidden rounded-2xl sm:w-80" style={{ aspectRatio: "3/2" }}>
-              <Image
-                src="/about.jpg"
-                fill
-                alt="Daniela Bordeianu"
-                className="object-cover"
-                sizes="(max-width: 640px) 256px, 320px"
-                priority
-              />
-            </div>
+            <ProtectedAboutImage />
           </RevealSection>
 
           <RevealSection as="div" className="w-full">

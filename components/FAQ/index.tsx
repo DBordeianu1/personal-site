@@ -90,7 +90,7 @@ export function FAQ() {
         </p>
       </Item>
 
-      <Item id="interests" question="What other interests do you have, outside of tech?">
+      <Item id="interests" question="What interests do you have, outside of tech?">
         <p>
           I love painting using watercolour, staying active (swimming, running,
           badminton), playing board/video games, and taking photos.
