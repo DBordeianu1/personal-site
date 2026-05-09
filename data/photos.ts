@@ -8,7 +8,7 @@ export const photos: Photo[] = [
   { id: "5", src: "/photos/greece.jpg", alt: "cruise in greece", ratio: "landscape", squareCropAvailable: true},
   { id: "6", src: "/photos/greek-sunrise.jpg", alt: "early greek sunrise", ratio: "portrait"},
   { id: "7", src: "/photos/iconic-ronda.jpg", alt: "took this from el puente nuevo, la ronda, spain", ratio: "landscape"},
-  { id: "8", src: "/photos/malaga.jpg", alt: "a sunset in málaga, spain", ratio: "landscape",squareCropAvailable: true},
+  { id: "8", src: "/photos/malaga.jpg", alt: "golden hour in málaga, spain", ratio: "landscape",squareCropAvailable: true},
   { id: "9", src: "/photos/montserrat-pt2.jpg", alt: "the beauty of montserrat", ratio: "landscape",squareCropAvailable: true},
   { id: "10", src: "/photos/montserrat.jpg", alt: "at the top of a mountain in montserrat",ratio: "landscape",squareCropAvailable: true},
   { id: "11", src: "/photos/nyc.jpg", alt: "the statue of liberty",ratio: "portrait",squareCropAvailable: true},

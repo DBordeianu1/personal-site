@@ -50,7 +50,7 @@ export const experiences: Experience[] = [
     period: "May 2026 – Present",
     date: "2026-03",
     description:
-      "Elected with 81% of the vote; acted as a liaison between the CSSA, sub-associations, and external entities; managed external partnerships and industry relations for the CSSA",
+      "Elected with 81% of the vote, acted as a liaison between the CSSA and external entities/sub-associations, and managed external partnerships as well as industry relations for the CSSA",
     category: "community",
     skills: ["Leadership", "Partnerships", "Collaboration", "Adaptability"],
   },
