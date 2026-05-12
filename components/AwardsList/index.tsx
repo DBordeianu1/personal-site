@@ -81,7 +81,7 @@ export function AwardsList({ awards }: Props) {
                 className={
                   award.thumbnailSrc
                     ? "group relative order-first h-48 w-full overflow-hidden rounded-xl sm:order-last sm:h-auto sm:w-[180px] sm:shrink-0"
-                    : "shrink-0 text-sm text-neutral-400 transition-colors hover:text-neutral-800"
+                    : "order-first shrink-0 self-start text-sm text-neutral-400 transition-colors hover:text-neutral-800 sm:order-last"
                 }
               >
                 {award.thumbnailSrc ? (
