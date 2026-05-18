@@ -9,16 +9,24 @@ const DarkModeContext = createContext<DarkModeCtx>({ dark: false, toggle: () => 
 export function DarkModeProvider({ children }: { children: React.ReactNode }) {
   const [dark, setDark] = useState(false);
 
-  // Sync React state with whatever the blocking script already applied to <html>
+  // Sync React state with whatever the blocking script already applied to <html>,
+  // and follow live system preference changes when the user has no manual override.
   useEffect(() => {
     setDark(document.documentElement.classList.contains("dark"));
+
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      document.documentElement.classList.toggle("dark", e.matches);
+      setDark(e.matches);
+    };
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
   }, []);
 
   const toggle = useCallback(() => {
     setDark((d) => {
       const next = !d;
       document.documentElement.classList.toggle("dark", next);
-      localStorage.setItem("dark-mode", String(next));
       return next;
     });
   }, []);

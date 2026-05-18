@@ -49,7 +49,7 @@ export default function RootLayout({
     >
       <head>
         {/* Runs before any paint — reads localStorage or system preference to avoid flash */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var s=localStorage.getItem('dark-mode');var d=s!==null?s==='true':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.classList.add('dark');}catch(e){}})();` }} />
       </head>
       <body className="flex min-h-screen flex-col bg-white text-neutral-900 dark:bg-black dark:text-white">
         <DarkModeProvider>

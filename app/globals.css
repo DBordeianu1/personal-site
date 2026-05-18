@@ -5,6 +5,7 @@
 
 /* Theme-aware accent color (beige ↔ dark purple) and page background */
 :root {
+  color-scheme: light;
   --page-bg:          white;
   --section-accent:   #f5f0e8;
 
@@ -16,6 +17,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --page-bg:          black;
   --section-accent:   #2b2b2b;
 
