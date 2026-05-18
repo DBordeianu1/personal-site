@@ -83,21 +83,11 @@ export function Gallery({ photos }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, [lightboxPhoto]);
 
-  // Lock background scroll while lightbox is open, compensating for scrollbar
-  // width so the page doesn't shift when the scrollbar disappears.
+  // Lock background scroll while lightbox is open.
+  // No scrollbar compensation needed — scrollbar-gutter: stable on html reserves the space.
   useEffect(() => {
-    if (lightboxPhoto) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    } else {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    };
+    document.body.style.overflow = lightboxPhoto ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [lightboxPhoto]);
 
   return (
