@@ -27,11 +27,11 @@ function Item({ question, id, children }: { question: string; id: string; childr
   };
 
   return (
-    <div className="border-b border-neutral-200 last:border-b-0">
+    <div className="border-b border-neutral-200 dark:border-neutral-600 last:border-b-0">
       <button
         type="button"
         onClick={toggle}
-        className="flex w-full cursor-pointer items-center gap-3 py-5 text-left text-base font-medium text-neutral-900 transition-colors hover:text-neutral-500"
+        className="flex w-full cursor-pointer items-center gap-3 py-5 text-left text-base font-medium text-neutral-900 dark:text-white transition-colors hover:text-neutral-500 dark:hover:text-neutral-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ function Item({ question, id, children }: { question: string; id: string; childr
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="shrink-0 text-neutral-400 transition-transform duration-300"
+          className="shrink-0 text-neutral-400 dark:text-neutral-300 transition-transform duration-300"
           style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
         >
           <polyline points="9 18 15 12 9 6" />
@@ -55,7 +55,7 @@ function Item({ question, id, children }: { question: string; id: string; childr
         className="overflow-hidden transition-all duration-300 ease-in-out"
         style={{ maxHeight: open ? "600px" : "0px" }}
       >
-        <div className="pb-5 text-sm leading-relaxed text-neutral-600">
+        <div className="pb-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
           {children}
         </div>
       </div>
@@ -73,7 +73,7 @@ export function FAQ() {
             <Link
               key={href}
               href={href}
-              className="rounded-full bg-[#DDEAF7] px-4 py-1.5 text-sm font-medium text-[#1A5C9A] transition-colors hover:bg-[#c8dff2]"
+              className="rounded-full bg-[#DDEAF7] dark:bg-[#1A5C9A] px-4 py-1.5 text-sm font-medium text-[#1A5C9A] dark:text-[#DDEAF7] transition-colors hover:bg-[#c8dff2] dark:hover:bg-[#1e6aad]"
             >
               {label} ↗
             </Link>
@@ -95,7 +95,7 @@ export function FAQ() {
           I love painting using watercolour, staying active (swimming, running,
           badminton), playing board/video games, and taking photos.
         </p>
-        <Link href="/gallery" className="mt-2 inline-block text-[#1A5C9A] hover:underline">
+        <Link href="/gallery" className="mt-2 inline-block text-[#1A5C9A] dark:text-[#DDEAF7] hover:underline">
           You can check out my photography work here ↗
         </Link>
       </Item>

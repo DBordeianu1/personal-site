@@ -13,7 +13,7 @@ const REVEAL_STYLE = {
   transition: "none",
 } as const;
 
-function Slideshow({ images }: { images: string[] }) {
+function Slideshow({ images, priority }: { images: string[]; priority?: boolean }) {
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
   const next = () => setIdx((i) => (i + 1) % images.length);
@@ -27,6 +27,7 @@ function Slideshow({ images }: { images: string[] }) {
         className="object-cover"
         sizes="(max-width: 640px) 100vw, 40vw"
         unoptimized={images[idx].endsWith(".png")}
+        priority={priority && idx === 0}
       />
       {images.length > 1 && (
         <>
@@ -61,7 +62,7 @@ function Slideshow({ images }: { images: string[] }) {
 
 function TechPill({ label }: { label: string }) {
   return (
-    <span className="rounded-full border border-neutral-300 px-2.5 py-0.5 text-xs text-neutral-600">
+    <span className="rounded-full border border-neutral-300 dark:border-neutral-600 px-2.5 py-0.5 text-xs text-neutral-600 dark:text-neutral-300">
       {label}
     </span>
   );
@@ -75,8 +76,8 @@ function LinkButton({ href, label, variant = "outline" }: { href: string; label:
       rel="noopener noreferrer"
       className={
         variant === "filled"
-          ? "inline-flex items-center gap-1 rounded-lg bg-neutral-400 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-neutral-500"
-          : "inline-flex items-center gap-1 rounded-lg border border-neutral-300 px-3 py-1.5 text-sm text-neutral-700 transition-colors hover:border-neutral-500 hover:text-neutral-900"
+          ? "inline-flex items-center gap-1 rounded-lg bg-neutral-400 dark:bg-neutral-200 px-3 py-1.5 text-sm font-medium text-white dark:text-neutral-600 transition-colors hover:bg-neutral-500 dark:hover:bg-white dark:hover:text-neutral-400"
+          : "inline-flex items-center gap-1 rounded-lg border border-neutral-300 dark:border-neutral-700 dark:bg-neutral-700 px-3 py-1.5 text-sm text-neutral-700 dark:text-white transition-colors hover:border-neutral-500 hover:text-neutral-900 dark:hover:bg-neutral-600 dark:hover:border-neutral-600 dark:hover:text-neutral-100"
       }
     >
       {label} ↗
@@ -145,30 +146,30 @@ export function ProjectsSection({ projects }: Props) {
           key={f.name}
           data-reveal
           style={REVEAL_STYLE}
-          className="rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
+          className="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
         >
           <div className={`flex flex-col sm:flex-row sm:items-stretch ${f.imageSrc ? "sm:min-h-[300px]" : ""}`}>
             {(f.images ?? (f.imageSrc ? [f.imageSrc] : null)) && (
-              <Slideshow images={f.images ?? [f.imageSrc!]} />
+              <Slideshow images={f.images ?? [f.imageSrc!]} priority />
             )}
             <div className="flex flex-1 flex-col justify-center gap-4 p-8">
               <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-[#DDEAF7] px-3 py-1 text-xs font-medium text-[#1A5C9A]">
+                <span className="rounded-full bg-[#DDEAF7] dark:bg-[#1A5C9A] px-3 py-1 text-xs font-medium text-[#1A5C9A] dark:text-[#DDEAF7]">
                   Featured
                 </span>
                 {f.teamProject && (
-                  <span className="rounded-full bg-[#FFEEAB] px-3 py-1 text-xs font-medium text-[#A8795E]">
+                  <span className="rounded-full bg-[#FFEEAB] dark:bg-[#A8795E] px-3 py-1 text-xs font-medium text-[#A8795E] dark:text-[#FFEEAB]">
                     Team project
                   </span>
                 )}
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-neutral-900">{f.name}</h2>
-                <p className="mt-1 text-sm text-neutral-400">{f.period}</p>
-                <p className="mt-1 text-base font-medium text-neutral-700">{f.tagline}</p>
+                <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">{f.name}</h2>
+                <p className="mt-1 text-sm text-neutral-400 dark:text-neutral-400">{f.period}</p>
+                <p className="mt-1 text-base font-medium text-neutral-700 dark:text-neutral-300">{f.tagline}</p>
               </div>
               {f.description && (
-                <p className="text-base leading-relaxed text-neutral-600">{f.description}</p>
+                <p className="text-base leading-relaxed text-neutral-600 dark:text-neutral-300">{f.description}</p>
               )}
               <div className="flex flex-wrap gap-2">
                 {f.techStack.map((tech) => (
@@ -192,7 +193,7 @@ export function ProjectsSection({ projects }: Props) {
               key={project.name}
               data-reveal
               style={REVEAL_STYLE}
-              className="flex flex-col sm:flex-row h-full rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
+              className="flex flex-col sm:flex-row h-full rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
             >
               {project.imageSrc && (
                 <div className="relative h-48 w-full overflow-hidden rounded-t-2xl sm:h-auto sm:w-2/5 sm:shrink-0 sm:rounded-t-none sm:rounded-l-2xl">
@@ -208,16 +209,16 @@ export function ProjectsSection({ projects }: Props) {
               )}
               <div className="flex flex-1 flex-col gap-4 p-5">
                 {project.teamProject && (
-                  <span className="w-fit rounded-full bg-[#FFEEAB] px-2.5 py-0.5 text-xs font-medium text-[#A8795E]">
+                  <span className="w-fit rounded-full bg-[#FFEEAB] dark:bg-[#A8795E] px-2.5 py-0.5 text-xs font-medium text-[#A8795E] dark:text-[#FFEEAB]">
                     Team project
                   </span>
                 )}
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-neutral-900">{project.name}</h3>
-                  <p className="text-xs text-neutral-400">{project.period}</p>
-                  <p className="text-sm font-medium text-neutral-700">{project.tagline}</p>
+                  <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{project.name}</h3>
+                  <p className="text-xs text-neutral-400 dark:text-neutral-400">{project.period}</p>
+                  <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">{project.tagline}</p>
                   {project.description && (
-                    <p className="pt-1 text-sm leading-relaxed text-neutral-600">{project.description}</p>
+                    <p className="pt-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{project.description}</p>
                   )}
                 </div>
                 <div className="flex flex-wrap gap-1.5">

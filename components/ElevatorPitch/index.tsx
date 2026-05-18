@@ -78,27 +78,27 @@ export function ElevatorPitch() {
   const psDone = phase === "done";
 
   return (
-    <div ref={ref} className="w-full space-y-4 border-l-4 border-neutral-200 pl-5">
+    <div ref={ref} className="w-full space-y-4 border-l-4 border-neutral-200 dark:border-neutral-700 pl-5">
 
       {/* Main pitch */}
-      <div className="relative text-left text-base leading-relaxed text-neutral-900">
+      <div className="relative text-left text-base leading-relaxed text-neutral-900 dark:text-white">
         <span className="invisible" aria-hidden="true">{MAIN_TEXT}</span>
         <span className="absolute inset-0">
           {mainDisplayed}
           {phase === "main" && (
-            <span className="ml-0.5 inline-block h-[1.1em] w-px align-middle animate-pulse bg-neutral-900" />
+            <span className="ml-0.5 inline-block h-[1.1em] w-px align-middle animate-pulse bg-neutral-900 dark:bg-white" />
           )}
         </span>
       </div>
 
       {/* PS — ghost always rendered to lock the height; overlay appears once main is done */}
-      <div className="relative text-left text-sm italic leading-relaxed text-neutral-500">
+      <div className="relative text-left text-sm italic leading-relaxed text-neutral-500 dark:text-neutral-400">
         <span className="invisible" aria-hidden="true">{PS_TEXT}</span>
         {(phase === "ps" || phase === "done") && (
           <span className="absolute inset-0">
             {psDisplayed}
             {!psDone && (
-              <span className="ml-0.5 inline-block h-[1.1em] w-px align-middle animate-pulse bg-neutral-500" />
+              <span className="ml-0.5 inline-block h-[1.1em] w-px align-middle animate-pulse bg-neutral-500 dark:bg-neutral-400" />
             )}
           </span>
         )}

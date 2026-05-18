@@ -18,15 +18,15 @@ function Tile({ letter, animate, delay }: { letter: string; animate: boolean; de
         height: TILE_SIZE,
         ...(animate
           ? {
-              backgroundColor: "white",
-              borderColor: "#d3d6da",
-              color: "#1a1a1b",
+              backgroundColor: "var(--wordle-tile-bg)",
+              borderColor: "var(--wordle-tile-border-init)",
+              color: "var(--wordle-tile-color)",
               animation: `wordle-flip-correct ${FLIP_MS}ms ease-in-out forwards`,
               animationDelay: `${delay}ms`,
             }
           : {
-              backgroundColor: "#6aaa64",
-              borderColor: "#6aaa64",
+              backgroundColor: "var(--wordle-correct)",
+              borderColor: "var(--wordle-correct)",
               color: "white",
             }),
       }}

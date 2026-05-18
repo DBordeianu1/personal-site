@@ -13,7 +13,7 @@ const REVEAL_STYLE = {
 
 function SkillPill({ label }: { label: string }) {
   return (
-    <span className="rounded-full bg-[#DDEAF7] px-2.5 py-0.5 text-xs font-medium text-[#1A5C9A]">
+    <span className="rounded-full bg-[#DDEAF7] dark:bg-[#1A5C9A] px-2.5 py-0.5 text-xs font-medium text-[#1A5C9A] dark:text-[#DDEAF7]">
       {label}
     </span>
   );
@@ -25,7 +25,7 @@ function Section({ title, items }: { title: string; items: Experience[] }) {
       <h2
         data-reveal
         style={REVEAL_STYLE}
-        className="mb-8 text-3xl font-semibold tracking-tight text-neutral-900"
+        className="mb-8 text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white"
       >
         {title}
       </h2>
@@ -38,15 +38,15 @@ function Section({ title, items }: { title: string; items: Experience[] }) {
             className="grid gap-2 sm:grid-cols-[240px_1fr] sm:gap-10"
           >
             <div className="pt-0.5">
-              <p className="text-sm text-neutral-500">{item.period}</p>
+              <p className="text-sm text-neutral-500 dark:text-neutral-400">{item.period}</p>
             </div>
             <div>
-              <p className="text-base text-neutral-600">
+              <p className="text-base text-neutral-600 dark:text-neutral-300">
                 {item.org}
                 {item.location ? ` · ${item.location}` : ""}
               </p>
-              <h3 className="text-xl font-bold text-neutral-900">{item.title}</h3>
-              <p className="mt-1.5 text-base leading-relaxed text-neutral-600">
+              <h3 className="text-xl font-bold text-neutral-900 dark:text-white">{item.title}</h3>
+              <p className="mt-1.5 text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
                 {item.description}
               </p>
               {item.skills.length > 0 && (
@@ -115,7 +115,7 @@ export function ExperienceList({ items }: Props) {
     <div ref={listRef} className="space-y-12">
       <Section title="Work" items={work} />
       <div data-reveal style={REVEAL_STYLE}>
-        <hr className="border-neutral-200" />
+        <hr className="border-neutral-200 dark:border-neutral-800" />
       </div>
       <Section title="Community" items={community} />
     </div>

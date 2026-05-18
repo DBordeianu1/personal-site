@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
+import { DarkModeProvider } from "@/components/DarkModeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,11 +44,18 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-neutral-900`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-neutral-900 dark:bg-black dark:text-white`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-screen flex-col bg-white text-neutral-900">
-        <NavBar />
-        {children}
+      <head>
+        {/* Runs before any paint — reads localStorage or system preference to avoid flash */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var s=localStorage.getItem('dark-mode');var d=s!==null?s==='true':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();` }} />
+      </head>
+      <body className="flex min-h-screen flex-col bg-white text-neutral-900 dark:bg-black dark:text-white">
+        <DarkModeProvider>
+          <NavBar />
+          {children}
+        </DarkModeProvider>
       </body>
     </html>
   );

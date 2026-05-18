@@ -62,7 +62,7 @@ export function EducationList({ items }: Props) {
             className="py-8"
           >
             <div className="min-w-0 flex-1">
-              <h2 className="text-xl font-bold text-neutral-900">
+              <h2 className="text-xl font-bold text-neutral-900 dark:text-white">
                 {edu.url ? (
                   <a
                     href={edu.url}
@@ -76,18 +76,18 @@ export function EducationList({ items }: Props) {
                   edu.institution
                 )}
               </h2>
-              <p className="text-base text-neutral-600">{edu.degree}</p>
-              <p className="text-sm text-neutral-400">{edu.years}</p>
+              <p className="text-base text-neutral-600 dark:text-neutral-300">{edu.degree}</p>
+              <p className="text-sm text-neutral-400 dark:text-neutral-400">{edu.years}</p>
 
               {edu.gpa && (
-                <p className="mt-3 text-sm text-neutral-400">
-                  <span className="mr-3 font-medium text-neutral-500">GPA</span>
+                <p className="mt-3 text-sm text-neutral-400 dark:text-neutral-400">
+                  <span className="mr-3 font-medium text-neutral-500 dark:text-neutral-400">GPA</span>
                   {edu.gpa.value} / {edu.gpa.outOf}
                 </p>
               )}
 
               {edu.courses && edu.courses.length > 0 && (
-                <p className="mt-1 text-sm text-neutral-500">
+                <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                   {edu.courses.join(" · ")}
                 </p>
               )}
@@ -96,7 +96,7 @@ export function EducationList({ items }: Props) {
 
           {i < sorted.length - 1 && (
             <div data-reveal style={REVEAL_STYLE}>
-              <hr className="border-neutral-200" />
+              <hr className="border-neutral-200 dark:border-neutral-800" />
             </div>
           )}
         </Fragment>

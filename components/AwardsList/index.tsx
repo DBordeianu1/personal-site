@@ -58,16 +58,16 @@ export function AwardsList({ awards }: Props) {
         <li
           key={i}
           style={REVEAL_STYLE}
-          className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
+          className="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
         >
           <div className={`flex flex-col gap-4 sm:flex-row sm:items-stretch sm:gap-6`}>
             <div className="min-w-0 flex-1">
-              <h2 className="text-2xl font-bold text-neutral-900">{award.name}</h2>
-              <p className="mt-0.5 text-base text-neutral-400">
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">{award.name}</h2>
+              <p className="mt-0.5 text-base text-neutral-400 dark:text-neutral-400">
                 {award.date} · {award.givenBy}
               </p>
               {award.description && (
-                <p className="mt-2 text-base leading-relaxed text-neutral-600">
+                <p className="mt-2 text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
                   {award.description}
                 </p>
               )}
@@ -81,7 +81,7 @@ export function AwardsList({ awards }: Props) {
                 className={
                   award.thumbnailSrc
                     ? "group relative order-first h-48 w-full overflow-hidden rounded-xl sm:order-last sm:h-auto sm:w-[180px] sm:shrink-0"
-                    : "order-first shrink-0 self-start text-sm text-neutral-400 transition-colors hover:text-neutral-800 sm:order-last"
+                    : "order-first shrink-0 self-start text-sm text-neutral-400 dark:text-neutral-400 transition-colors hover:text-neutral-800 dark:hover:text-white sm:order-last"
                 }
               >
                 {award.thumbnailSrc ? (

@@ -15,7 +15,7 @@ export const educations: Education[] = [
     degree: "B.Sc. Computer Science (Co-op)",
     years: "2024 – Present",
     date: "2028-09",
-    gpa: { value: "9.87", outOf: "10" },
+    gpa: { value: "9.9", outOf: "10" },
     courses: [
       "Discrete Mathematics",
       "Data Structures and Algorithms",
@@ -34,7 +34,7 @@ export const educations: Education[] = [
     years: "2019 – 2024",
     date: "2024-06",
     gpa: { value: "95", outOf: "100" },
-    courses: ["Enriched Mathematics, Physics, and Chemistry"],
+    courses: ["Enriched Mathematics, Physics, and Chemistry option"],
     logoSrc: "/education/csa.png",
     url: "https://st-alex.ca/",
   },
