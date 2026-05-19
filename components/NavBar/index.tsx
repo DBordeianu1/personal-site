@@ -18,6 +18,10 @@ export function NavBar() {
   const { toggle } = useDarkMode();
 
   return (
+    <>
+      {open && (
+        <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+      )}
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-800">
       <div className="flex h-16 items-center justify-between px-4">
         <button
@@ -72,5 +76,6 @@ export function NavBar() {
         </ul>
       )}
     </nav>
+    </>
   );
 }
