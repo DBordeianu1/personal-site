@@ -92,7 +92,7 @@ export function FAQ() {
       </Item>
 
       <Item id="interests" question="What interests do you have, outside of tech?">
-        <div className="flex flex-col-reverse sm:flex-row sm:items-start gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-4">
           <div className="flex-1">
             <p>
               I love painting using watercolour, staying active (swimming, running,
