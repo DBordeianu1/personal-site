@@ -80,7 +80,7 @@ export function CurrentSong() {
         <p className="text-lg font-semibold text-neutral-900 dark:text-white sm:text-xl">{track.title}</p>
         <p className="text-base text-neutral-500 dark:text-neutral-400">{track.artist}</p>
         {currentSong.note && (
-          <p className="mt-5 text-sm italic text-neutral-400 dark:text-neutral-400">{currentSong.note}</p>
+          <p className="mt-3 text-sm italic text-neutral-400 dark:text-neutral-400">{currentSong.note}</p>
         )}
         <p className="mt-2 text-sm text-neutral-400 dark:text-neutral-400 transition-colors group-hover:text-neutral-700 dark:group-hover:text-white">
           Listen on YouTube ↗

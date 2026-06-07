@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { CurrentSong } from "@/components/CurrentSong";
 
@@ -91,13 +92,26 @@ export function FAQ() {
       </Item>
 
       <Item id="interests" question="What interests do you have, outside of tech?">
-        <p>
-          I love painting using watercolour, staying active (swimming, running,
-          badminton), playing board/video games, and taking photos.
-        </p>
-        <Link href="/gallery" className="mt-2 inline-block text-[#1A5C9A] dark:text-[#DDEAF7] hover:underline">
-          You can check out my photography work here ↗
-        </Link>
+        <div className="flex flex-col-reverse sm:flex-row sm:items-start gap-4">
+          <div className="flex-1">
+            <p>
+              I love painting using watercolour, staying active (swimming, running,
+              badminton), playing board/video games, and taking photos.
+            </p>
+            <Link href="/gallery" className="mt-2 inline-block text-[#1A5C9A] dark:text-[#DDEAF7] hover:underline">
+              You can check out my photography work here ↗
+            </Link>
+          </div>
+          <Image
+            src="/photographing.JPG"
+            alt="Me out photographing"
+            width={400}
+            height={267}
+            className="w-full h-auto rounded-xl sm:w-44 sm:shrink-0"
+            onContextMenu={(e) => e.preventDefault()}
+            draggable={false}
+          />
+        </div>
       </Item>
 
       <Item id="song" question="What song have you been playing on repeat lately?">

@@ -9,6 +9,11 @@ export type Award = {
 
 export const awards: Award[] = [
   {
+    name: "4x Dean's Honour List Recipient",
+    date: "Winter 2026, Fall 2025, Winter 2025, Fall 2024",
+    givenBy: "Faculty of Engineering, University of Ottawa",
+  },
+  {
     name: "University of Ottawa Active and Retired Administrative Staff Scholarship",
     date: "January 2026",
     givenBy: "University of Ottawa",
@@ -22,11 +27,6 @@ export const awards: Award[] = [
     givenBy: "University of Ottawa",
     description:
       "Awarded in support of academic pursuit and continued professional/educational development.",
-  },
-  {
-    name: "3x Dean's Honour List Recipient",
-    date: "Fall 2025, Winter 2025, Fall 2024",
-    givenBy: "Faculty of Engineering, University of Ottawa",
   },
   {
     name: "Admission's Scholarship",

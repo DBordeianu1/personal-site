@@ -1,15 +1,15 @@
 import type { Photo } from "@/lib/gallery/types";
 
 export const photos: Photo[] = [
-  { id: "1", src: "/photos/barca.jpg", alt: "park güell", ratio: "portrait" },
-  { id: "2", src: "/photos/caviar.jpg", alt: "sunrise caviar", ratio: "landscape" },
+  { id: "1", src: "/photos/barca.jpg", alt: "park güell in spain is ineffable", ratio: "portrait" },
+  { id: "2", src: "/photos/caviar.jpg", alt: "sunrise caviar, a rare occurence", ratio: "landscape" },
   { id: "3", src: "/photos/from-gibraltar.jpg", alt: "gibraltar's pov of morocco",ratio: "landscape"},
   { id: "4", src: "/photos/fruits-in-nyc.jpg", alt: "fruit stand in nyc", ratio: "portrait"},
   { id: "5", src: "/photos/greece.jpg", alt: "cruise in greece", ratio: "landscape", squareCropAvailable: true},
   { id: "6", src: "/photos/greek-sunrise.jpg", alt: "early greek sunrise", ratio: "portrait"},
   { id: "7", src: "/photos/iconic-ronda.jpg", alt: "took this from el puente nuevo, la ronda, spain", ratio: "landscape"},
-  { id: "8", src: "/photos/malaga.jpg", alt: "golden hour in málaga, spain", ratio: "landscape",squareCropAvailable: true},
-  { id: "9", src: "/photos/montserrat-pt2.jpg", alt: "the beauty of montserrat", ratio: "landscape",squareCropAvailable: true},
+  { id: "8", src: "/photos/malaga.jpg", alt: "golden hour surely is charming in málaga, spain", ratio: "landscape",squareCropAvailable: true},
+  { id: "9", src: "/photos/montserrat-pt2.jpg", alt: "these trees look a lot like broccoli, right?", ratio: "landscape",squareCropAvailable: true},
   { id: "10", src: "/photos/montserrat.jpg", alt: "at the top of a mountain in montserrat",ratio: "landscape",squareCropAvailable: true},
   { id: "11", src: "/photos/nyc.jpg", alt: "the statue of liberty",ratio: "portrait",squareCropAvailable: true},
   { id: "12", src: "/photos/paris-pt2.jpg", alt: "oui oui, c'est paris",ratio: "portrait",squareCropAvailable: true},
@@ -24,7 +24,7 @@ export const photos: Photo[] = [
   { id: "21", src: "/photos/the-sea.jpg",alt: "love that turquoise water",ratio: "landscape",squareCropAvailable: true},
   { id: "22", src: "/photos/trees.jpg",alt: "a stroll in the park",ratio: "portrait"},
   { id: "23", src: "/photos/water-on-leaves.jpg",alt: "after the storm",ratio: "portrait"},
-  { id: "24", src: "/photos/water-sparkles.jpg",alt: "when the water sparkles",ratio: "portrait",squareCropAvailable: true},
+  { id: "24", src: "/photos/water-sparkles.jpg",alt: "my version of touching grass",ratio: "portrait",squareCropAvailable: true},
   { id: "25", src: "/photos/winter.jpg",alt: "sunny winter day",ratio: "portrait",squareCropAvailable: true},
   { id: "26", src: "/photos/yum.jpg",alt: "homemade pizza margherita",ratio: "landscape"},
 ];

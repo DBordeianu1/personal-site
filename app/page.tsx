@@ -64,10 +64,12 @@ export default function Home() {
 
       {/* 3 — FAQ */}
       <RevealSection className="bg-[#f5f0e8] dark:bg-[#2b2b2b] px-6 py-14 sm:px-12">
-        <h2 className="mb-8 text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
-          FAQ
-        </h2>
-        <FAQ />
+        <div className="mx-auto max-w-xl">
+          <h2 className="mb-8 text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+            FAQ
+          </h2>
+          <FAQ />
+        </div>
       </RevealSection>
 
       <hr className="border-neutral-200 dark:border-neutral-800" />
