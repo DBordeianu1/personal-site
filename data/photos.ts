@@ -1,7 +1,7 @@
 import type { Photo } from "@/lib/gallery/types";
 
 export const photos: Photo[] = [
-  { id: "1", src: "/photos/barca.jpg", alt: "park güell in spain is ineffable", ratio: "portrait" },
+  { id: "1", src: "/photos/barca.jpg", alt: "park güell is ineffable", ratio: "portrait" },
   { id: "2", src: "/photos/caviar.jpg", alt: "sunrise caviar, a rare occurence", ratio: "landscape" },
   { id: "3", src: "/photos/from-gibraltar.jpg", alt: "gibraltar's pov of morocco",ratio: "landscape"},
   { id: "4", src: "/photos/fruits-in-nyc.jpg", alt: "fruit stand in nyc", ratio: "portrait"},
@@ -16,10 +16,10 @@ export const photos: Photo[] = [
   { id: "13", src: "/photos/paris-pt3.jpg", alt: "the eiffel tower",ratio: "landscape",squareCropAvailable: true},
   { id: "14", src: "/photos/paris.jpg",alt: "la seine",ratio: "landscape"},
   { id: "15", src: "/photos/pond.jpg",alt: "a pond in madrid",ratio: "landscape",squareCropAvailable: true},
-  { id: "16", src: "/photos/ronda-homes.jpg",alt: "la ronda in spain",ratio: "landscape",squareCropAvailable: true},
+  { id: "16", src: "/photos/ronda-homes.jpg",alt: "la ronda really is a hidden gem",ratio: "landscape",squareCropAvailable: true},
   { id: "17", src: "/photos/sagrada-familia.jpg",alt: "so you could say we contributed to the construction of the sagrada família",ratio: "portrait"},
   { id: "18", src: "/photos/snail.jpg",alt: "we found a snail",ratio: "landscape"},
-  { id: "19", src: "/photos/sub-palm-tree.jpg",alt: "a palm tree in gibraltar",ratio: "landscape"},
+  { id: "19", src: "/photos/sub-palm-tree.jpg",alt: "grateful for that palm tree's shade",ratio: "landscape"},
   { id: "20", src: "/photos/sunset.jpg",alt: "sunset in greece",ratio: "landscape",squareCropAvailable: true},
   { id: "21", src: "/photos/the-sea.jpg",alt: "love that turquoise water",ratio: "landscape",squareCropAvailable: true},
   { id: "22", src: "/photos/trees.jpg",alt: "a stroll in the park",ratio: "portrait"},
