@@ -19,7 +19,7 @@ export const photos: Photo[] = [
   { id: "16", src: "/photos/ronda-homes.jpg",alt: "la ronda really is a hidden gem",ratio: "landscape",squareCropAvailable: true},
   { id: "17", src: "/photos/sagrada-familia.jpg",alt: "so you could say we contributed to the construction of the sagrada família",ratio: "portrait"},
   { id: "18", src: "/photos/snail.jpg",alt: "we found a snail",ratio: "landscape"},
-  { id: "19", src: "/photos/sub-palm-tree.jpg",alt: "grateful for that palm tree's shade",ratio: "landscape"},
+  { id: "19", src: "/photos/sub-palm-tree.jpg",alt: "in the palm tree's shade",ratio: "landscape"},
   { id: "20", src: "/photos/sunset.jpg",alt: "sunset in greece",ratio: "landscape",squareCropAvailable: true},
   { id: "21", src: "/photos/the-sea.jpg",alt: "love that turquoise water",ratio: "landscape",squareCropAvailable: true},
   { id: "22", src: "/photos/trees.jpg",alt: "a stroll in the park",ratio: "portrait"},
