@@ -1,4 +1,4 @@
 export const currentSong = {
-  youtubeVideoId: "BQUi7mD_PkM",
-  note: "This song reminds me of ocean waves",
+  youtubeVideoId: "RDHywzuV7yYmg",
+  note: "This is the song of the summer",
 };
