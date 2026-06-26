@@ -27,4 +27,5 @@ export const photos: Photo[] = [
   { id: "24", src: "/photos/water-sparkles.jpg",alt: "my version of touching grass",ratio: "portrait",squareCropAvailable: true},
   { id: "25", src: "/photos/winter.jpg",alt: "sunny winter day",ratio: "portrait",squareCropAvailable: true},
   { id: "26", src: "/photos/yum.jpg",alt: "homemade pizza margherita",ratio: "landscape"},
+  { id: "27", src: "/photos/moon-focus.jpg",alt: "still stunned at the quality achievable with this camera",ratio: "landscape"},
 ];
