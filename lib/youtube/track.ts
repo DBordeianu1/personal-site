@@ -28,10 +28,11 @@ export async function getTrack(): Promise<TrackMeta> {
 
   const data = await res.json();
   const { title, artist } = parseTitle(data.title as string);
+  const authorName = (data.author_name as string).replace(/ - Topic$/, "");
 
   return {
     title: title || (data.title as string),
-    artist: artist || (data.author_name as string),
+    artist: artist || authorName,
     thumbnailUrl: `https://img.youtube.com/vi/${youtubeVideoId}/mqdefault.jpg`,
     youtubeUrl: videoUrl,
   };
