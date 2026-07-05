@@ -96,7 +96,7 @@ export function FAQ() {
           <div className="flex-1">
             <p>
               I love painting using watercolour, staying active (swimming, running,
-              badminton), playing board/video games, and taking photos.
+              badminton), playing board/video games, and taking photos of anything that catches my eye.
             </p>
             <Link href="/gallery" className="mt-2 inline-block text-[#1A5C9A] dark:text-[#DDEAF7] hover:underline">
               You can check out my photography work here ↗
