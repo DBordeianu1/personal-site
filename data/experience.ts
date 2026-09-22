@@ -78,8 +78,7 @@ export const experiences: Experience[] = [
   },
   {
     title: "Student Cafe Organizer and Fundraising Volunteer",
-    org: "Agir Outaouais",
-    location: "Collège Saint-Alexandre de la Gatineau",
+    org: "Collège Saint-Alexandre de la Gatineau",
     period: "September 2022 – June 2023",
     date: "2023-06",
     description:
