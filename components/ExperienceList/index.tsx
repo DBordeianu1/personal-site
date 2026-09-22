@@ -46,9 +46,14 @@ function Section({ title, items }: { title: string; items: Experience[] }) {
                 {item.location ? ` · ${item.location}` : ""}
               </p>
               <h3 className="text-xl font-bold text-neutral-900 dark:text-white">{item.title}</h3>
-              <p className="mt-1.5 text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-                {item.description}
-              </p>
+
+              {item.description.length > 0 && (
+                <div className="mt-1.5 space-y-5 text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+                  {item.description.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
+              )}
               {item.skills.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {item.skills.map((skill) => (

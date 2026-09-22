@@ -84,10 +84,7 @@ export function FAQ() {
 
       <Item id="working-on" question="What are you working on right now?">
         <p>
-          I&apos;m starting my internship at Solace as a Software Developer, building
-          full-stack features for the PubSub+ Cloud Console on the Event Mesh &amp;
-          Observability team. Outside of work, I&apos;m always coming up with side
-          projects... this site being one of them.
+          Day to day at CEED, I contribute to MakerRepo, an open-source platform managing 3,000+ engineering projects. Outside of work, I&apos;m either studying for my five classes this term or coming up with side projects... this site being one of them.
         </p>
       </Item>
 

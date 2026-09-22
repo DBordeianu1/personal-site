@@ -1,5 +1,5 @@
 const MAIN_TEXT =
-  "I like building solutions that are both functional and thoughtful, which is why Computer Science felt right. This summer, I'll be interning at Solace as a Software Developer, exploring Cloud Infrastructure and Observability.";
+  "I like building solutions that are both functional and thoughtful, which is why computer science felt right. This fall, I joined the Centre for Entrepreneurship and Engineering Design (CEED) as a Full Stack Developer, where I'll be exploring tools like Linux and AWS S3.";
 
 const PS_TEXT =
   "P.S. View this on a laptop to catch the interactive details since I've added a few (okay, a lot) of hover effects into the UI for you to discover.";
