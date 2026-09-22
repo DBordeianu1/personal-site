@@ -1,30 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CurrentSong } from "@/components/CurrentSong";
 
 const NAV_LINKS = [
-  { label: "Education",        href: "/education" },
-  { label: "Experience/Volunteering",  href: "/experience" },
-  { label: "Projects",         href: "/projects" },
-  { label: "Awards",           href: "/awards" },
+  { label: "Education", href: "/education" },
+  { label: "Experience", href: "/experience" },
+  { label: "Projects", href: "/projects" },
+  { label: "Awards", href: "/awards" },
 ];
 
-function Item({ question, id, children }: { question: string; id: string; children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
+const FAQ_TOGGLE_EVENT = "faq-toggle";
 
-  useEffect(() => {
-    setOpen(sessionStorage.getItem(`faq-${id}`) === "1");
-  }, [id]);
+function subscribe(callback: () => void) {
+  window.addEventListener(FAQ_TOGGLE_EVENT, callback);
+  return () => window.removeEventListener(FAQ_TOGGLE_EVENT, callback);
+}
+
+function Item({ question, id, children }: { question: string; id: string; children: React.ReactNode }) {
+  const key = `faq-${id}`;
+  const open = useSyncExternalStore(
+    subscribe,
+    () => sessionStorage.getItem(key) === "1",
+    () => false,
+  );
 
   const toggle = () => {
-    setOpen((o) => {
-      const next = !o;
-      sessionStorage.setItem(`faq-${id}`, next ? "1" : "0");
-      return next;
-    });
+    sessionStorage.setItem(key, open ? "0" : "1");
+    window.dispatchEvent(new Event(FAQ_TOGGLE_EVENT));
   };
 
   return (
@@ -100,7 +105,7 @@ export function FAQ() {
             </Link>
           </div>
           <Image
-            src="/photographing.JPG"
+            src="/photographing.jpg"
             alt="Me out photographing"
             width={400}
             height={267}

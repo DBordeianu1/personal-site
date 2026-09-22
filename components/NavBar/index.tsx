@@ -5,12 +5,12 @@ import Link from "next/link";
 import { useDarkMode } from "@/components/DarkModeProvider";
 
 const links = [
-  { label: "Home",                    href: "/" },
-  { label: "Education",               href: "/education" },
-  { label: "Experience/Volunteering", href: "/experience" },
-  { label: "Projects",                href: "/projects" },
-  { label: "Awards",                  href: "/awards" },
-  { label: "Gallery",                 href: "/gallery" },
+  { label: "Home", href: "/" },
+  { label: "Education", href: "/education" },
+  { label: "Experience", href: "/experience" },
+  { label: "Projects", href: "/projects" },
+  { label: "Awards", href: "/awards" },
+  { label: "Gallery", href: "/gallery" },
 ];
 
 export function NavBar() {
