@@ -28,7 +28,7 @@ export const experiences: Experience[] = [
     period: "May 2026 – August 2026",
     date: "2026-05",
     description: 
-      ["Led a Spring Boot 4 migration across 2 Java microservices (125 files), resolving breaking changes related to exception handling.","Developed in 2 weeks a full-stack feature that lets the Support team (30+ people) manage Datadog users themselves, replacing ticket filing.", "Built 5 internal Claude Code skills, including a statusline script adopted org-wide."],
+      ["Led a Spring Boot 4 migration across 2 Java microservices, refactoring 125 files to resolve breaking changes in exception handling.","Developed in 2 weeks a full-stack feature that lets the Support team (30+ people) manage Datadog users themselves, replacing ticket filing.", "Built 5 internal Claude Code skills, including a statusline script adopted org-wide."],
     category: "work",skills: ["Spring Boot", "Datadog", "Kubernetes", "Claude Code"],
     
   },
