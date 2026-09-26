@@ -59,7 +59,7 @@ export function CurrentSong() {
     return (
       <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className={cardClass}>
         <Thumbnail />
-        <div className="flex flex-col justify-center p-5 sm:p-6">
+        <div className="flex flex-col justify-center border-t border-neutral-200 dark:border-neutral-700 p-5 sm:self-stretch sm:border-l sm:border-t-0 sm:p-6">
           {currentSong.note && (
             <p className="text-sm italic text-neutral-400">{currentSong.note}</p>
           )}
@@ -76,7 +76,7 @@ export function CurrentSong() {
   return (
     <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className={cardClass}>
       <Thumbnail />
-      <div className="flex flex-col justify-center p-5 sm:p-6">
+      <div className="flex flex-col justify-center border-t border-neutral-200 dark:border-neutral-700 p-5 sm:self-stretch sm:border-l sm:border-t-0 sm:p-6">
         <p className="text-lg font-semibold text-neutral-900 dark:text-white sm:text-xl">{track.title}</p>
         <p className="text-base text-neutral-500 dark:text-neutral-400">{track.artist}</p>
         {currentSong.note && (

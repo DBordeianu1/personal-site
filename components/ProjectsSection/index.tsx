@@ -19,7 +19,7 @@ function Slideshow({ images, preload }: { images: string[]; preload?: boolean })
   const next = () => setIdx((i) => (i + 1) % images.length);
 
   return (
-    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl sm:h-auto sm:w-2/5 sm:shrink-0 sm:rounded-t-none sm:rounded-l-2xl">
+    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl border-b border-neutral-200 dark:border-neutral-700 sm:h-auto sm:w-2/5 sm:shrink-0 sm:rounded-t-none sm:rounded-l-2xl sm:border-b-0 sm:border-r">
       <Image
         src={images[idx]}
         fill
@@ -196,7 +196,7 @@ export function ProjectsSection({ projects }: Props) {
               className="flex flex-col sm:flex-row h-full rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow-sm transition duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
             >
               {project.imageSrc && (
-                <div className="relative h-48 w-full overflow-hidden rounded-t-2xl sm:h-auto sm:w-2/5 sm:shrink-0 sm:rounded-t-none sm:rounded-l-2xl">
+                <div className="relative h-48 w-full overflow-hidden rounded-t-2xl border-b border-neutral-200 dark:border-neutral-700 sm:h-auto sm:w-2/5 sm:shrink-0 sm:rounded-t-none sm:rounded-l-2xl sm:border-b-0 sm:border-r">
                   <Image
                     src={project.imageSrc}
                     fill
