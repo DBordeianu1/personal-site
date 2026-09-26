@@ -10,7 +10,7 @@ export async function GET(_req: NextRequest): Promise<NextResponse> {
     const meta = await getTrack();
     console.info(`[youtube] served: ${meta.title} by ${meta.artist}`);
     return NextResponse.json(meta, {
-      headers: { "Cache-Control": "public, max-age=3600, s-maxage=3600" },
+      headers: { "Cache-Control": "public, max-age=0, s-maxage=3600" },
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
