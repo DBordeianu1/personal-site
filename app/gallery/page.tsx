@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Gallery" };
 
 export default function GalleryPage() {
   return (
-    <main className="relative px-4 pb-4 pt-[80px]">
+    <main className="relative mx-auto w-full max-w-[1600px] px-4 pb-4 pt-[80px]">
       <h1 className="mb-2 text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
         Gallery
       </h1>

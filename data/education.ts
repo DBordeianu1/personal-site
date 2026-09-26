@@ -5,7 +5,6 @@ export type Education = {
   date: string; // YYYY-MM for sorting (start date, descending)
   gpa?: { value: string; outOf: string };
   courses?: string[];
-  logoSrc?: string;
   url?: string;
 };
 
@@ -24,7 +23,6 @@ export const educations: Education[] = [
       "Databases I",
       "Programming Paradigms (Go, Scheme, Prolog)",
     ],
-    logoSrc: "/education/uottawa.png",
     url: "https://www.uottawa.ca",
   },
   {
@@ -34,7 +32,6 @@ export const educations: Education[] = [
     date: "2024-06",
     gpa: { value: "95", outOf: "100" },
     courses: ["Enriched Mathematics, Physics, and Chemistry option"],
-    logoSrc: "/education/csa.png",
     url: "https://st-alex.ca/",
   },
 ];

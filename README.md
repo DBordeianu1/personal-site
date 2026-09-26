@@ -49,3 +49,29 @@ npm audit
 ```
 
 Review any new advisories before continuing.
+
+---
+
+## Development
+
+### Adding new images
+
+All images are in the .jpg or .png format in this project. Images are served `unoptimized` (Vercel does not resize or re-compress them), so each file must be resized before it is added. Download and use the ImageMagick open source tool:
+
+```
+magick -version
+```
+
+Resize to the largest size the image is displayed at, and keep quality high. `>` only shrinks, it never enlarges:
+
+```
+magick input.jpg -resize "2560x2560>" -quality 90 output.jpg
+```
+
+Keep the full-size originals outside the repo. Only run the command on new files: `mogrify` or `*.jpg` re-saves every file, including ones that were already processed, and each re-save loses a little quality.
+
+Check the result (dimensions, file size, quality):
+
+```
+magick identify -format "%f %wx%h %b Q%Q\n" output.jpg
+```

@@ -105,10 +105,11 @@ export function FAQ() {
             </Link>
           </div>
           <Image
-            src="/photographing.jpg"
+            src="/photographing-1280.jpg"
             alt="Me out photographing"
-            width={400}
-            height={267}
+            width={1280}
+            height={1600}
+            unoptimized
             className="w-full h-auto rounded-xl sm:w-44 sm:shrink-0"
             onContextMenu={(e) => e.preventDefault()}
             draggable={false}

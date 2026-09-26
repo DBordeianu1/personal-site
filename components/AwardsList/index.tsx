@@ -91,7 +91,7 @@ export function AwardsList({ awards }: Props) {
                       fill
                       alt={`${award.name} certificate`}
                       className="object-cover"
-                      sizes="(max-width: 640px) 100vw, 180px"
+                      unoptimized
                       draggable={false}
                       onContextMenu={(e) => e.preventDefault()}
                     />

@@ -91,15 +91,6 @@ export function generate(photos: Photo[], viewportWidth: number): LayoutTree {
   if (photos.length === 0) {
     throw new Error("generate() requires at least one photo");
   }
-  // Rough minimum-size sanity check: on a vertical split, each photo needs at
-  // least MIN_TILE_SHORT_EDGE px. For portrait photos on a narrow viewport this
-  // is the binding constraint. We warn rather than throw so the caller can decide.
-  const roughMinWidth = MIN_TILE_SHORT_EDGE;
-  if (viewportWidth < roughMinWidth) {
-    console.warn(
-      `generate(): viewportWidth ${viewportWidth}px is below the minimum tile size (${roughMinWidth}px). Layout may violate the minimum-size constraint.`
-    );
-  }
   const root = buildNode(photos, 0, viewportWidth, viewportWidth);
   return { root, totalPhotos: photos.length };
 }
@@ -131,7 +122,8 @@ function renderNode(
   h: number,
   gutter: number,
   rects: PixelRect[],
-  photoIndexMap: Map<string, number>
+  photoIndexMap: Map<string, number>,
+  narrowSplitWidths: number[]
 ): void {
   if (node.kind === "leaf") {
     const index = photoIndexMap.get(node.photoId);
@@ -143,17 +135,22 @@ function renderNode(
   }
 
   if (node.direction === "vertical") {
+    // Side-by-side sides must each be at least MIN_TILE_SHORT_EDGE wide (before gutters).
+    // Checked here with real widths, since buildNode() only had width estimates.
+    const narrowest = Math.min(w * node.proportion, w * (1 - node.proportion));
+    if (narrowest < MIN_TILE_SHORT_EDGE) narrowSplitWidths.push(narrowest);
+
     // Both children share the same height h; widths are split by proportion.
     const w1 = Math.round(w * node.proportion - gutter / 2);
     const w2 = w - w1 - gutter; // exact — no rounding accumulation
-    renderNode(node.first, x, y, w1, h, gutter, rects, photoIndexMap);
-    renderNode(node.second, x + w1 + gutter, y, w2, h, gutter, rects, photoIndexMap);
+    renderNode(node.first, x, y, w1, h, gutter, rects, photoIndexMap, narrowSplitWidths);
+    renderNode(node.second, x + w1 + gutter, y, w2, h, gutter, rects, photoIndexMap, narrowSplitWidths);
   } else {
     // Both children share the same width w; heights are split by proportion.
     const h1 = Math.round(h * node.proportion - gutter / 2);
     const h2 = h - h1 - gutter; // exact
-    renderNode(node.first, x, y, w, h1, gutter, rects, photoIndexMap);
-    renderNode(node.second, x, y + h1 + gutter, w, h2, gutter, rects, photoIndexMap);
+    renderNode(node.first, x, y, w, h1, gutter, rects, photoIndexMap, narrowSplitWidths);
+    renderNode(node.second, x, y + h1 + gutter, w, h2, gutter, rects, photoIndexMap, narrowSplitWidths);
   }
 }
 
@@ -167,6 +164,13 @@ export function render(
   const containerHeight = Math.round(containerWidth / effectiveRatio(tree.root));
   const photoIndexMap = buildPhotoIndexMap(tree.root);
   const rects: PixelRect[] = new Array(tree.totalPhotos);
-  renderNode(tree.root, 0, 0, containerWidth, containerHeight, gutter, rects, photoIndexMap);
+  const narrowSplitWidths: number[] = [];
+  renderNode(tree.root, 0, 0, containerWidth, containerHeight, gutter, rects, photoIndexMap, narrowSplitWidths);
+  // Warn rather than throw so the gallery still renders.
+  if (narrowSplitWidths.length > 0) {
+    console.warn(
+      `render(): ${narrowSplitWidths.length} side-by-side placement(s) narrower than ${MIN_TILE_SHORT_EDGE}px (narrowest ${Math.round(Math.min(...narrowSplitWidths))}px) at containerWidth ${containerWidth}px.`
+    );
+  }
   return { rects, containerHeight };
 }

@@ -19,6 +19,8 @@ const REVEAL_STYLE = {
 export function Gallery({ photos }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(0);
+  // Distance from the top of the page to the gallery (navbar, title, subtitle)
+  const [containerTop, setContainerTop] = useState(0);
   const prevWidthRef = useRef(0);
   const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
 
@@ -30,6 +32,7 @@ export function Gallery({ photos }: Props) {
       const newWidth = Math.round(entry.contentRect.width);
       if (Math.abs(newWidth - prevWidthRef.current) > 1) {
         prevWidthRef.current = newWidth;
+        setContainerTop(el.getBoundingClientRect().top + window.scrollY);
         setContainerWidth(newWidth);
       }
     });
@@ -118,10 +121,10 @@ export function Gallery({ photos }: Props) {
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes={`${Math.round(rect.w)}px`}
+                unoptimized
                 className="object-cover"
                 draggable={false}
-                preload={i < 4}
+                loading={containerTop + rect.y < window.innerHeight ? "eager" : "lazy"}
               />
               <figcaption className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 px-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 <p className="line-clamp-3 text-center text-sm font-medium leading-snug text-white">

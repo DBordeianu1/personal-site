@@ -10,12 +10,12 @@ export function ProtectedAboutImage() {
       onContextMenu={(e) => e.preventDefault()}
     >
       <Image
-        src="/about.jpg"
+        src="/about-960.jpg"
         fill
         alt="Daniela Bordeianu"
         className="select-none object-cover"
-        sizes="(max-width: 640px) 256px, 320px"
-        priority
+        unoptimized
+        preload
         draggable={false}
       />
     </div>

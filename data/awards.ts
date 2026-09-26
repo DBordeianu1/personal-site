@@ -55,7 +55,7 @@ export const awards: Award[] = [
     givenBy: "Le Droit",
     description: `Published author in "Le Droit" journal for the philosophical essay "La notion de temps", exploring the impact of social comparison on one's potential. Granted honour through the "La Plume Étudiante de l'Outaouais" competition.`,
     url: "https://www.ledroit.com/la-vitrine/la-plume-etudiante-de-loutaouais/2023/12/20/la-notion-de-temps-D23PH4GV3BES3L4JUFKOFGXEHI/",
-    thumbnailSrc: "/awards/empire-state-building.jpg",
+    thumbnailSrc: "/awards/empire-state-building-1280.jpg",
   },
   {
     name: "Math Level J Completion Award",

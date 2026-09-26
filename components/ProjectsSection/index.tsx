@@ -13,7 +13,7 @@ const REVEAL_STYLE = {
   transition: "none",
 } as const;
 
-function Slideshow({ images, priority }: { images: string[]; priority?: boolean }) {
+function Slideshow({ images, preload }: { images: string[]; preload?: boolean }) {
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
   const next = () => setIdx((i) => (i + 1) % images.length);
@@ -27,7 +27,7 @@ function Slideshow({ images, priority }: { images: string[]; priority?: boolean 
         className="object-cover"
         sizes="(max-width: 640px) 100vw, 40vw"
         unoptimized={images[idx].endsWith(".png")}
-        priority={priority && idx === 0}
+        preload={preload && idx === 0}
       />
       {images.length > 1 && (
         <>
@@ -150,7 +150,7 @@ export function ProjectsSection({ projects }: Props) {
         >
           <div className={`flex flex-col sm:flex-row sm:items-stretch ${f.imageSrc ? "sm:min-h-[300px]" : ""}`}>
             {(f.images ?? (f.imageSrc ? [f.imageSrc] : null)) && (
-              <Slideshow images={f.images ?? [f.imageSrc!]} priority />
+              <Slideshow images={f.images ?? [f.imageSrc!]} preload />
             )}
             <div className="flex flex-1 flex-col justify-center gap-4 p-8">
               <div className="flex flex-wrap gap-2">
