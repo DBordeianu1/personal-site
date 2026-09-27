@@ -10,6 +10,10 @@ type Props = { photos: Photo[] };
 
 const GUTTER = 16;
 
+// Wider galleries reuse the layout for this width, scaled up to fill the space.
+// Above ~1700px the algorithm places some side-by-side tiles under its 400px minimum.
+const MAX_LAYOUT_WIDTH = 1699;
+
 const REVEAL_STYLE = {
   opacity: 0,
   transform: "translateY(24px)",
@@ -42,7 +46,7 @@ export function Gallery({ photos }: Props) {
 
   const { rects, containerHeight } = useMemo(() => {
     if (containerWidth === 0) return { rects: [], containerHeight: 0 };
-    const tree = generate(photos, containerWidth);
+    const tree = generate(photos, Math.min(containerWidth, MAX_LAYOUT_WIDTH));
     return render(tree, containerWidth, GUTTER);
   }, [photos, containerWidth]);
 
