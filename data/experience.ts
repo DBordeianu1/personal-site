@@ -61,7 +61,7 @@ export const experiences: Experience[] = [
     period: "May 2026 – Present",
     date: "2026-03",
     description:
-      ["Elected with 81% of the vote, secured 3 tech partnerships ($1,900 in funding), and partnered with 2 local restaurants, serving as the primary liaison between the CSSA and external entities."],
+      ["Elected with 81% of the vote, secured 3 tech partnerships ($1,700 in funding), and partnered with 2 local restaurants, serving as the primary liaison between the CSSA and external entities."],
     category: "community",
     skills: ["Leadership", "Partnerships", "Collaboration", "Adaptability"],
   },
