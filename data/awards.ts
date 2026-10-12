@@ -27,6 +27,7 @@ export const awards: Award[] = [
     givenBy: "University of Ottawa",
     description:
       "Awarded in support of academic pursuit and continued professional/educational development.",
+      url: "https://apruo.ca/scholarships/scholarship-recipients",
   },
   {
     name: "Admission's Scholarship",
